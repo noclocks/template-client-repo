@@ -1,8 +1,12 @@
-# No Clocks, LLC Default `dependabot.yml` Configuration File
 version: 2
 updates:
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: ".github/workflows"
+    schedule:
+      interval: "daily"
+  # Git Submodules
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
     schedule:
       interval: "daily"

@@ -1,0 +1,58 @@
+name: Git Sub-Modules Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update:
+    name: Update Git SubModules
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TZ: America/New_York
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - name: Setup Git
+        id: setup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Update Submodules
+        id: update
+        run: |
+          git submodule update --remote --recursive
+      - name: Git Status
+        id: status
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "status<<$EOF" >> $GITHUB_OUTPUT
+          echo "$(git status -s)" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+      - name: Stage and Commit
+        id: commit
+        if: ${{ steps.status.outputs.status }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          set +e
+          git add .
+          git commit -m "[chore]: update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
+      - name: Push
+        if: ${{ steps.commit.outputs.status }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
