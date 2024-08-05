@@ -1,0 +1,11 @@
+*
+!.gitignore
+
+!*.md
+!*.encrypted.yml
+!*.example
+!*.template.yml
+
+.env
+config.yml
+credentials.json
