@@ -1,0 +1,5 @@
+# Git Sub Modules
+
+# [submodule "submodule"]
+#  path = src/<submodule>
+#  url = https://github.com/noclocks/<submodule>.git
