@@ -1,0 +1,25 @@
+name: Template Sync
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 0 1 * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: actions-template-sync
+        id: sync
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: noclocks/template-client-repo
+          upstream_branch: main # defaults to main
+          pr_labels: template, chore
