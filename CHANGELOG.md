@@ -19,6 +19,8 @@
 
 ## Features
 
+- Create .templatesyncignore ([7948382](https://github.com/noclocks/template-client-repo/commit/7948382b7a016ed05d9fba758950dfc0a51e90e1))  - (Jimmy Briggs)
+- Initialize new template-sync.yml GHA workflow ([d9ca923](https://github.com/noclocks/template-client-repo/commit/d9ca92394da59ae2cc395e95d775c90cba702e86))  - (Jimmy Briggs)
 - Add placeholders ([65e7416](https://github.com/noclocks/template-client-repo/commit/65e741666c5af041def8f555614827bb1af835f9))  - (Jimmy Briggs)
 - Enhance brand and config folders ([3ee1e9e](https://github.com/noclocks/template-client-repo/commit/3ee1e9ea72f839a13a98ca27aae3a3c2325ea236))  - (Jimmy Briggs)
 - Add brand folder ([53caa2e](https://github.com/noclocks/template-client-repo/commit/53caa2e450eae6bf961486a5f9c5a6f2127769a4))  - (Jimmy Briggs)
