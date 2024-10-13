@@ -22,4 +22,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: noclocks/template-client-repo
           upstream_branch: main # defaults to main
-          pr_labels: template, chore
+          pr_labels: template,chore
