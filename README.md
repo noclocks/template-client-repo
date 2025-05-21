@@ -9,7 +9,22 @@
 
 ***
 
-## Contents
+## Structure
+
+Below is an example repository structure for a client:
+
+```plaintext
+client-acme/
+├── .github/               # GitHub Configuration, Copilot Instructions, and Workflows
+├── admin/                 # -> Linked to Google Drive Administrative Folder
+├── brand/                 # Symlinks to Drive Brand Assets
+├── config/                # Client Configs; Infrastructure-as-Code (Terraform/GCP)
+├── data/                  # Processed Client Data (Raw in Google Drive) 
+├── docs/                  # Technical Documentation (API specs, etc.)
+└── src/                   # Source Code / Git Modules to Client Repos
+```
+
+## Folders
 
 - [admin/](admin/): Administrative Files
 - [brand/](brand/): Client Brand Assets
